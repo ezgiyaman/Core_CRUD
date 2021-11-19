@@ -1,0 +1,44 @@
+﻿@model List<AppUser>
+@{
+    ViewData["Title"] = "List";
+}
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-header">List of Categories</h4>
+            </div>
+            <div class="card-body">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>FirstName</th>
+                            <th>LastName</th>
+                            <th>Update</th>
+                            <th>Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (AppUser appUser in Model)
+                        {
+                            <tr>
+                                <td>@appUser.FirstName</td>
+                                <td>@appUser.LastName</td>
+                                <td>
+                                    <a asp-action="Update" asp-route-id="@appUser.Id" class="btn btn-sm btn-warning">Update</a>
+                                </td>
+                                <td>
+                                    <a asp-action="Delete" asp-route-id="@appUser.Id" class="btn btn-sm btn-danger">Delete</a>
+                                </td>
+                            </tr>
+
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <div class="card-footer">
+                <a asp-action="Create" class="btn btn-block btn-dark">Create New AppUser</a>
+            </div>
+        </div>
+    </div>
+</div>
